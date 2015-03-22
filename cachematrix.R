@@ -1,7 +1,8 @@
-## Put comments here that give an overall description of what your
-## functions do
+## Overall, these two functions fulfill matrix inversion. Due to the large workload of matrix inversion calculation, the programee
+## should be designed to reduce work of calculation by store the matrix entered as well as its inversion in a cache place and
+## if the matrix entered the second time is the same as the cached one, the programme will directly print the stored result.
 
-## Write a short comment describing this function
+## This function send the matrix entered for inversion calculation and at the same time store it in cache
 
 makeCacheMatrix <- function(x = matrix()) {
  i <- NULL
@@ -9,7 +10,9 @@ makeCacheMatrix <- function(x = matrix()) {
     x <<- y
     i <<- NULL
   }
+  ## Set the value of matrix
   get <- function() x
+  ## Get the value of matrix
   setinv <- function(inv) i <<- inv
   getinv <- function() i
   list(set = set, get = get,
@@ -18,7 +21,8 @@ makeCacheMatrix <- function(x = matrix()) {
 }
 
 
-## Write a short comment describing this function
+## This calculation makes comparison between the cached matrix and the new one that has been entered. If they are the same, the
+## message "getting cached data" is printed and the stored result will be returned.
 
 cacheSolve <- function(x, ...) {
      i <- x$getinv()
